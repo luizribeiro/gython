@@ -1676,6 +1676,39 @@ public class PyObject implements Serializable {
     }
 
     /**
+     * Implements the Gython expression <code>this -&gt; other</code>.
+     *
+     * @param o the object to compare this with.
+     * @return the result of the comparison
+     **/
+    public final PyObject _rde(PyObject o2) {
+        // TODO: implement the -> operator
+        throw Py.TypeError(_unsupportedop("->", o2));
+    }
+
+    /**
+     * Implements the Gython expression <code>this &lt;-&gt; other</code>.
+     *
+     * @param o the object to compare this with.
+     * @return the result of the comparison
+     **/
+    public final PyObject _bde(PyObject o2) {
+        // TODO: implement the <-> operator
+        throw Py.TypeError(_unsupportedop("<->", o2));
+    }
+
+    /**
+     * Implements the Gython expression <code>this &lt;- other</code>.
+     *
+     * @param o the object to compare this with.
+     * @return the result of the comparison
+     **/
+    public final PyObject _lde(PyObject o2) {
+        // TODO: implement the <- operator
+        throw Py.TypeError(_unsupportedop("<-", o2));
+    }
+
+    /**
      * Equivalent to the standard Python __contains__ method.
      *
      * @param o the element to search for in this container.

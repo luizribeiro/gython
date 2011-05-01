@@ -1550,6 +1550,15 @@ public class CodeCompiler extends Visitor implements Opcodes, ClassConstants {
             case NotIn:
                 name = "_notin";
                 break;
+            case RDE:
+                name = "_rde";
+                break;
+            case BDE:
+                name = "_bde";
+                break;
+            case LDE:
+                name = "_lde";
+                break;
         }
         code.invokevirtual(p(PyObject.class), name, sig(PyObject.class, PyObject.class));
     }

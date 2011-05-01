@@ -594,7 +594,7 @@ comparison
        )
     ;
 
-//comp_op: '<'|'>'|'=='|'>='|'<='|'<>'|'!='|'in'|'not' 'in'|'is'|'is' 'not'
+//comp_op: '<'|'>'|'=='|'>='|'<='|'<>'|'!='|'->'|'<->'|'<-'|'in'|'not' 'in'|'is'|'is' 'not'
 comp_op
     : LESS
     | GREATER
@@ -603,6 +603,9 @@ comp_op
     | LESSEQUAL
     | ALT_NOTEQUAL
     | NOTEQUAL
+    | RIGHTDIREDGE
+    | BIDIREDGE
+    | LEFTDIREDGE
     | IN
     | NOT IN
     | IS
@@ -951,6 +954,12 @@ EQUAL    : '==' ;
 NOTEQUAL    : '!=' ;
 
 ALT_NOTEQUAL: '<>' ;
+
+RIGHTDIREDGE: '->' ;
+
+BIDIREDGE: '<->' ;
+
+LEFTDIREDGE: '<-' ;
 
 LESSEQUAL    : '<=' ;
 

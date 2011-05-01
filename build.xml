@@ -268,8 +268,8 @@ svnant.jar.dir=${basedir}/../externals/svnant-jars
     </target>
     <target name="full-check" depends="full-preinit, init, dump-env">
         <!-- Require all of the optional jars for a full build -->
-        <fail unless="informix.present" message="informix jar not present" />
-        <fail unless="oracle.present" message="oracle jar not present" />
+        <!--<fail unless="informix.present" message="informix jar not present" />
+        <fail unless="oracle.present" message="oracle jar not present" />-->
     </target>
     <target name="dump-env" depends="init">
         <echo>.</echo>
