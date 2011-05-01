@@ -1676,14 +1676,42 @@ public class PyObject implements Serializable {
     }
 
     /**
+     * Implements the Gython __rde__ method (<code>-&gt;</code> operator).
+     *
+     * @param other the object to compare this with.
+     * @return the result of the comparison, or null if this operation
+     *            is not defined.
+     **/
+    public PyObject __rde__(PyObject other) {
+        return null;
+    }
+
+    /**
      * Implements the Gython expression <code>this -&gt; other</code>.
      *
      * @param o the object to compare this with.
      * @return the result of the comparison
      **/
-    public final PyObject _rde(PyObject o2) {
-        // TODO: implement the -> operator
-        throw Py.TypeError(_unsupportedop("->", o2));
+    public final PyObject _rde(PyObject o) {
+        PyObject res = __rde__(o);
+        if (res != null)
+            return res;
+        res = o.__rde__(this);
+        if (res != null)
+            return res;
+
+        throw Py.TypeError(_unsupportedop("->", o));
+    }
+
+    /**
+     * Implements the Gython __bde__ method (<code>&lt;-&gt;</code> operator).
+     *
+     * @param other the object to compare this with.
+     * @return the result of the comparison, or null if this operation
+     *            is not defined.
+     **/
+    public PyObject __bde__(PyObject other) {
+        return null;
     }
 
     /**
@@ -1692,9 +1720,26 @@ public class PyObject implements Serializable {
      * @param o the object to compare this with.
      * @return the result of the comparison
      **/
-    public final PyObject _bde(PyObject o2) {
-        // TODO: implement the <-> operator
-        throw Py.TypeError(_unsupportedop("<->", o2));
+    public final PyObject _bde(PyObject o) {
+        PyObject res = __bde__(o);
+        if (res != null)
+            return res;
+        res = o.__bde__(this);
+        if (res != null)
+            return res;
+
+        throw Py.TypeError(_unsupportedop("<->", o));
+    }
+
+    /**
+     * Implements the Gython __lde__ method (<code>&lt;-</code> operator).
+     *
+     * @param other the object to compare this with.
+     * @return the result of the comparison, or null if this operation
+     *            is not defined.
+     **/
+    public PyObject __lde__(PyObject other) {
+        return null;
     }
 
     /**
@@ -1703,9 +1748,15 @@ public class PyObject implements Serializable {
      * @param o the object to compare this with.
      * @return the result of the comparison
      **/
-    public final PyObject _lde(PyObject o2) {
-        // TODO: implement the <- operator
-        throw Py.TypeError(_unsupportedop("<-", o2));
+    public final PyObject _lde(PyObject o) {
+        PyObject res = __lde__(o);
+        if (res != null)
+            return res;
+        res = o.__lde__(this);
+        if (res != null)
+            return res;
+
+        throw Py.TypeError(_unsupportedop("<-", o));
     }
 
     /**
