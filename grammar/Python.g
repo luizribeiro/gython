@@ -1112,7 +1112,7 @@ comparison
        )
     ;
 
-//comp_op: '<'|'>'|'=='|'>='|'<='|'<>'|'!='|'->'|'<->'|'<-'|'in'|'not' 'in'|'is'|'is' 'not'
+//comp_op: '<'|'>'|'=='|'>='|'<='|'<>'|'!='|'->'|'<->'|'<-'|'?'|'in'|'not' 'in'|'is'|'is' 'not'
 comp_op
     returns [cmpopType op]
     : LESS
@@ -1135,6 +1135,8 @@ comp_op
         {$op = cmpopType.BDE;}
     | LEFTDIREDGE
         {$op = cmpopType.LDE;}
+    | QUESTIONM
+        {$op = cmpopType.ANYE;}
     | IN
         {$op = cmpopType.In;}
     | NOT IN
@@ -1852,6 +1854,8 @@ RIGHTDIREDGE: '->' ;
 BIDIREDGE: '<->' ;
 
 LEFTDIREDGE: '<-' ;
+
+QUESTIONM: '?' ;
 
 LESSEQUAL    : '<=' ;
 

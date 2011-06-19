@@ -17,5 +17,6 @@ public enum cmpopType {
     NotIn,
     RDE,
     BDE,
-    LDE;
+    LDE,
+    ANYE;
 }

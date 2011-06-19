@@ -594,7 +594,7 @@ comparison
        )
     ;
 
-//comp_op: '<'|'>'|'=='|'>='|'<='|'<>'|'!='|'->'|'<->'|'<-'|'in'|'not' 'in'|'is'|'is' 'not'
+//comp_op: '<'|'>'|'=='|'>='|'<='|'<>'|'!='|'->'|'<->'|'<-'|'?'|'in'|'not' 'in'|'is'|'is' 'not'
 comp_op
     : LESS
     | GREATER
@@ -606,6 +606,7 @@ comp_op
     | RIGHTDIREDGE
     | BIDIREDGE
     | LEFTDIREDGE
+    | QUESTIONM
     | IN
     | NOT IN
     | IS
@@ -960,6 +961,8 @@ RIGHTDIREDGE: '->' ;
 BIDIREDGE: '<->' ;
 
 LEFTDIREDGE: '<-' ;
+
+QUESTIONM: '?' ;
 
 LESSEQUAL    : '<=' ;
 

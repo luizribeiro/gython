@@ -1559,6 +1559,9 @@ public class CodeCompiler extends Visitor implements Opcodes, ClassConstants {
             case LDE:
                 name = "_lde";
                 break;
+            case ANYE:
+                name = "_anye";
+                break;
         }
         code.invokevirtual(p(PyObject.class), name, sig(PyObject.class, PyObject.class));
     }

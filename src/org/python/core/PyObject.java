@@ -1760,6 +1760,34 @@ public class PyObject implements Serializable {
     }
 
     /**
+     * Implements the Gython __anye__ method (<code>?</code> operator).
+     *
+     * @param other the object to compare this with.
+     * @return the result of the comparison, or null if this operation
+     *            is not defined.
+     **/
+    public PyObject __anye__(PyObject other) {
+        return null;
+    }
+
+    /**
+     * Implements the Gython expression <code>this ? other</code>.
+     *
+     * @param o the object to compare this with.
+     * @return the result of the comparison
+     **/
+    public final PyObject _anye(PyObject o) {
+        PyObject res = __anye__(o);
+        if (res != null)
+            return res;
+        res = o.__anye__(this);
+        if (res != null)
+            return res;
+
+        throw Py.TypeError(_unsupportedop("?", o));
+    }
+
+    /**
      * Equivalent to the standard Python __contains__ method.
      *
      * @param o the element to search for in this container.
