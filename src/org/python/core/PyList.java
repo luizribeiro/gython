@@ -1189,4 +1189,74 @@ public class PyList extends PySequenceList implements List {
     public synchronized boolean remove(Object o) {
         return list.remove(Py.java2py(o));
     }
+
+    // Gython specific features go below
+
+    public void __setattr__(String name, PyObject value) {
+        list___setattr__(name, value);
+    }
+
+    @ExposedMethod(doc = BuiltinDocs.list___setattr___doc)
+    final void list___setattr__(String name, PyObject value) {
+        for (Iterator it = iterator(); it.hasNext(); ) {
+            PyObject obj = (PyObject) it.next();
+            obj.__setattr__(name, value);
+        }
+    }
+
+    public PyObject __rde__(PyObject other) {
+        return list___rde__(other);
+    }
+
+    @ExposedMethod
+    final PyObject list___rde__(PyObject other) {
+        BaseSet newSet = new PySet();
+        for (Iterator it = iterator(); it.hasNext(); ) {
+            PyObject obj = (PyObject) it.next();
+            newSet.__ior__(obj.__rde__(other));
+        }
+        return newSet;
+    }
+
+    public PyObject __bde__(PyObject other) {
+        return list___bde__(other);
+    }
+
+    @ExposedMethod
+    final PyObject list___bde__(PyObject other) {
+        BaseSet newSet = new PySet();
+        for (Iterator it = iterator(); it.hasNext(); ) {
+            PyObject obj = (PyObject) it.next();
+            newSet.__ior__(obj.__bde__(other));
+        }
+        return newSet;
+    }
+
+    public PyObject __lde__(PyObject other) {
+        return list___lde__(other);
+    }
+
+    @ExposedMethod
+    final PyObject list___lde__(PyObject other) {
+        BaseSet newSet = new PySet();
+        for (Iterator it = iterator(); it.hasNext(); ) {
+            PyObject obj = (PyObject) it.next();
+            newSet.__ior__(obj.__lde__(other));
+        }
+        return newSet;
+    }
+
+    public PyObject __anye__(PyObject other) {
+        return list___anye__(other);
+    }
+
+    @ExposedMethod
+    final PyObject list___anye__(PyObject other) {
+        BaseSet newSet = new PySet();
+        for (Iterator it = iterator(); it.hasNext(); ) {
+            PyObject obj = (PyObject) it.next();
+            newSet.__ior__(obj.__anye__(other));
+        }
+        return newSet;
+    }
 }
